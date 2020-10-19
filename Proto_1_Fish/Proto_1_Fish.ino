@@ -1,5 +1,6 @@
 //Developed and Maintained by Aniket Patra
 //Created on Arduino IDE v1.8.13
+//Version 0.0.3
 
 #include <DS3231.h>   //For RTC Clock, check Github Readme for more info.
 #include<string.h>
@@ -17,9 +18,9 @@ DS3231  rtc(SDA, SCL);   //Connect to the Arduino Default SDA SCL Pins, Google i
 char light_off[9]="21 00 00";            //24-hours timings as string
 char light_on[9]="09 30 00";
 char filterDayOff[9]="10 00 00";         //filter off time, during day time feeding
-char filterDayOn[9]="10 30 00";
+char filterDayOn[9]="10 05 00";
 char filterNightOff[9]="22 00 00";         //same as above
-char filterNightOn[9]="22 30 00";
+char filterNightOn[9]="22 05 00";
 
 void setup() {
   rtc.begin();               
@@ -33,12 +34,13 @@ void setup() {
 
   //##############################  fail-safe checking  #################################################
   //This part of code checks status of light, filter and feeder when the device is turned on.
-  //Particularly useful after a Power loss
+  //Particularly useful after a Power loss. It takes the current time and decides the things that should have been done.
+  //I will update it again with EEPROM function so that it remembers what were done before power cut.
   char temp[7];
   strcpy(temp,removeSpaces(rtc.getTimeStr(FORMAT_LONG,false)));
   temp[5]=0;
   int x=atoi(temp);  //holds current time upto ex.17:12:4, therefor 10:30:33 will be represented as 10303
-  int l_off=21000,l_on=9300,fd_off=10000,fd_on=10300,fn_off=22000,fn_on=22300;   //l_off is light off, fd is filter during day, fn is filter during night
+  int l_off=21000,l_on=9300,fd_off=10000,fd_on=10050,fn_off=22000,fn_on=22050;   //l_off is light off, fd is filter during day, fn is filter during night
                                                                                  //Be sure to update this as well when you update above timings, I will update it later
                                                                                  //for automatic setting
   if (x>=l_on && x<l_off)
