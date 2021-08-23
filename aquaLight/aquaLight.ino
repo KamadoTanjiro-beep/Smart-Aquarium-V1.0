@@ -5,8 +5,10 @@ DS3231 rtc(SDA, SCL);
 
 #define light 7
 #define filter 8
-#define off LOW
-#define on HIGH
+#define lightOn digitalWrite(light, HIGH)
+#define lightOff digitalWrite(light, LOW)
+#define filterOn digitalWrite(filter, HIGH)
+
 char light_off[9] = "18 30 00"; //24-hours timings as string
 char light_on[9] = "08 30 00";
 
@@ -16,8 +18,8 @@ void setup()
 
   pinMode(light, OUTPUT);
   pinMode(filter, OUTPUT);
-  digitalWrite(light, on);
-  digitalWrite(filter, on);
+  lightOn;
+  filterOn;
   //Serial.begin(9600);
   //rtc.setTime(16,05,00);       //Use this to set correct time into RTC Module, remember to again comment this after use
   //rtc.setDate(23,12,2021);
@@ -32,12 +34,12 @@ void setup()
   if (x >= l_on && x < l_off)
   {
     //Serial.println("Light Should be ON!");
-    digitalWrite(light, on);
+    lightOn;
   }
   else
   {
     //Serial.println("Light Should be OFF!");
-    digitalWrite(light, off);
+    lightOff;
   }
 
   //####################################################################################################
@@ -50,11 +52,11 @@ void loop()
 
   if (strcmp(light_off, rtc.getTimeStr(FORMAT_LONG, false)) == 0) //Light ON or OFF, it compares current time with your aforementioned time strings
   {
-    digitalWrite(light, off);
+    lightOff;
   }
   else if (strcmp(light_on, rtc.getTimeStr(FORMAT_LONG, false)) == 0)
   {
-    digitalWrite(light, on);
+    lightOn;
   }
 }
 
