@@ -1,6 +1,6 @@
 //Developed and Maintained by Aniket Patra
 //Created on Arduino IDE v1.8.15
-//Version 0.0.1
+//Version 0.0.1 - 10 October 2021
 //*Initial Release
 #include <Servo.h> //For servo controlling the feeder
 
