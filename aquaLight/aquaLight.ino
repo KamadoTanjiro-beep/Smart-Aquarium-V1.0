@@ -10,7 +10,7 @@ DS3231 rtc(SDA, SCL);
 #define filterOn digitalWrite(filter, HIGH)
 
 char light_off[9] = "21 00 00"; //24-hours timings as string
-char light_on[9] = "13 00 00";
+char light_on[9] = "12 00 00";
 
 void setup()
 {
@@ -29,7 +29,7 @@ void setup()
   strcpy(temp, removeSpaces(rtc.getTimeStr(FORMAT_LONG, false)));
   temp[5] = 0;
   int x = atoi(temp); //holds current time upto ex.17:12:4, therefor 10:30:33 will be represented as 10303
-  int l_off = 21000, l_on = 13000;
+  int l_off = 21000, l_on = 12000;
 
   if (x >= l_on && x < l_off)
   {
