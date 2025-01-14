@@ -1,8 +1,38 @@
-# Auto Aquarium
-Automatic control for light, filter and feeder using Arduino and DS3231
+# 🐠 Auto Aquarium
 
-Required Libraries are servo.h, DS3231.h, string.h, stdio.h. Out of which DS3231.h can be found here http://www.rinkydinkelectronics.com/library.php?id=73
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://github.com/aniket-patra/Smart-Aquarium-V1.0)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=Arduino&logoColor=white)](https://www.arduino.cc/)
 
-You can also search my other Arduino projects (https://github.com/aniket-patra/arduino/blob/master/Library/DS3231.7z) where I have added the zipped, my customized version of DS3231 library aforementioned, for 12/24 hours support.
+Automatic control system for aquarium maintenance using Arduino and DS3231 RTC module.
 
-FOR ANY KIND OF QUESTIONS OR QUERIES PLEASE CONTACT ME HERE: https://aniketpatra.pythonanywhere.com/contact
+## 🔍 Features
+- Automated lighting control
+- Scheduled feeding system
+- Time-based Aquarium management
+
+## 📁 Project Structure
+The project contains three main files:
+- `aquaFeeder.ino` - Servo motor based automatic fish feeder
+- `aquaLight.ino` - Light timing control system
+- `aquaLightFeed.ino` - Combined light and feeder control
+
+## 📚 Dependencies
+Required Libraries:
+- `servo.h`
+- `DS3231.h` ([Download Link](http://www.rinkydinkelectronics.com/library.php?id=73))
+- `string.h`
+- `stdio.h`
+
+## ❓ Support
+For questions or queries, please [open an issue](https://github.com/desiFish/Smart-Aquarium-V1.0/issues).
+
+## 📜 License
+This project is licensed under the GNU General Public License v3.0
+
+### License Summary
+- You can freely use, modify and distribute this software
+- Any modifications must be released under the same license
+- You must disclose the source code when distributing
+- Changes must be documented
+- Include original license and copyright notices
